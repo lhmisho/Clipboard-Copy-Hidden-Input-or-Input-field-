@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Copy Link button</title>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+	<p>Click on the button to copy the text from the text field. Try to paste the text (e.g. ctrl+v) afterwards in a different window, to see the effect.</p>
+
+	<input type="text" id="myInput" style="display: none" value="Hello World for my new next">
+	<button id="myBtn" onclick="myFunction()">Copy text</button>
+
+	<p>The document.execCommand() method is not supported in IE8 and earlier.</p>
+
+
+	<script type="text/javascript">
+		
+		// if the input field is hidden than we cant use this method .... 
+		// first we put display none on inline than we again make display block to copy the hidden link 
+		// than again make display none
+		function myFunction(){
+	        $("#myBtn").click(function(){
+	            var link = $("#myInput").val();
+	            $("#myInput").css('display',  'block');
+	            $("#myInput").focus();
+	            $("#myInput").select();
+	            document.execCommand('copy');
+	            $("#myInput").css('display',  'none');
+	            alert("Copied Link: " + link)
+	        });
+        }
+        $(document).ready(function(){
+        	myFunction();
+        })
+
+        // if the value is not hide than we can use this code simply
+        // function myFunction(){
+		// 	var copyLink = document.getElementById('myInput')
+		// 	copyLink.select()
+		// 	document.execCommand('copy');
+		// 	alert("Copied Link: " + copyLink.value)
+		// }
+    
+	</script>
+</body>
+</html>
